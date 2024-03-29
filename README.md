@@ -1,4 +1,3 @@
-# README
 
 ## Installation
 *prerequisite: have rails installed on your machine*
