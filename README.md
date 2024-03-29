@@ -17,6 +17,7 @@ Then submit the form and you should see the results of the delineation analysis 
 ## Some remarks
 - The front is very (very) basic, could definitely be improved :nail_care:
 - Tests are not complete :construction_worker:
+- Error handling not really implemented
 
 ## Assignment
 Holter Record Summary
