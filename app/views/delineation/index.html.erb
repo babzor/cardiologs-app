@@ -1,0 +1,41 @@
+<div>
+  <h1>Delineation upload</h1>
+
+  <%= form_with url: delineation_index_url, method: :post, data: { turbo: false } do |f| %>
+    <p>
+      <%= f.label :ecg_csv_file, "ECG file (.csv):" %>
+      <%= f.file_field  :ecg_csv_file, accept: ".csv", required: true %>
+    </p>
+    <p>
+      <%= f.label :ecg_date_time, "ECG start date and time:" %>
+      <%= f.datetime_select :ecg_date_time, include_blank: true %>
+    </p>
+    <p>
+      <%= f.submit "Upload" %>
+    </p>
+  <% end %>
+
+  <% if @delineation_result.present? %>
+    <h1>Delineation results</h1>
+    <h3>Heart mean rate: <%= @delineation_result.mean_heart_rate %></h3>
+
+    <div>
+      <h3>Min mean rate (in bpm): <%= @delineation_result.min_heart_rate_in_bpm %></h3>
+      <% if @delineation_result.min_heart_rate_started_at %>
+        <p>Recorded at: <%= @delineation_result.min_heart_rate_started_at %></p>
+      <% else %>
+        <p>Onset (in ms): <%= @delineation_result.min_heart_rate[:onset_started_at] %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <h3>Max mean rate (in bpm): <%= @delineation_result.max_heart_rate_in_bpm %></h3>
+      <% if @delineation_result.max_heart_rate_started_at %>
+        <p>Recorded at: <%= @delineation_result.max_heart_rate_started_at %></p>
+      <% else %>
+        <p>Onset (in ms): <%= @delineation_result.max_heart_rate[:onset_started_at] %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
